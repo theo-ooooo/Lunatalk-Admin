@@ -6,36 +6,53 @@ import ProductListPage from '@/features/products/pages/ProductListPage'
 import MemberListPage from '@/features/members/pages/MemberListPage'
 import OrderListPage from '@/features/orders/pages/OrderListPage'
 import CategoryListPage from '@/features/categories/pages/CategoryListPage'
+import RedirectIfAuthenticated from '@/features/auth/RedirectIfAuthenticated'
+import RequireAuth from '@/features/auth/RequireAuth'
+import LogoutPage from '@/features/auth/pages/LogoutPage'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-    element: <AdminLayout />,
+    element: <RequireAuth />,
     children: [
       {
-        index: true,
-        element: <DashboardPage />,
+        path: '/',
+        element: <AdminLayout />,
+        children: [
+          {
+            index: true,
+            element: <DashboardPage />,
+          },
+          {
+            path: '/products',
+            element: <ProductListPage />,
+          },
+          {
+            path: '/members',
+            element: <MemberListPage />,
+          },
+          {
+            path: '/orders',
+            element: <OrderListPage />,
+          },
+          {
+            path: '/categories',
+            element: <CategoryListPage />,
+          },
+        ],
       },
       {
-        path: '/products',
-        element: <ProductListPage />,
-      },
-      {
-        path: '/members',
-        element: <MemberListPage />,
-      },
-      {
-        path: '/orders',
-        element: <OrderListPage />,
-      },
-      {
-        path: '/categories',
-        element: <CategoryListPage />,
+        path: '/logout',
+        element: <LogoutPage />,
       },
     ],
   },
   {
-    path: '/login',
-    element: <LoginPage />,
+    element: <RedirectIfAuthenticated />,
+    children: [
+      {
+        path: '/login',
+        element: <LoginPage />,
+      },
+    ],
   },
 ])
