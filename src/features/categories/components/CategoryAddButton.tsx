@@ -14,7 +14,7 @@ export default function CategoryAddButton() {
   const [visibility, setVisibility] = useState<VISIBILITY>(VISIBILITY.HIDDEN)
 
   const {
-    createMutation: { mutate, isLoading },
+    createMutation: { mutate, isPending },
   } = useCategoryMutations()
 
   const handleOnClick = () => {
@@ -57,7 +57,7 @@ export default function CategoryAddButton() {
         </div>
 
         <DialogFooter>
-          <Button onClick={handleOnClick} disabled={isLoading}>
+          <Button onClick={handleOnClick} disabled={isPending}>
             추가
           </Button>
         </DialogFooter>

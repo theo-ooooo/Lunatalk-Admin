@@ -11,8 +11,6 @@ import { VISIBILITY } from '../interface'
 
 interface Props {
   categoryId: number
-  defaultName: string
-  defaultVisibility: 'VISIBLE' | 'HIDDEN'
 }
 
 export default function CategoryEditDialog({ categoryId }: Props) {
@@ -21,7 +19,7 @@ export default function CategoryEditDialog({ categoryId }: Props) {
   const [visibility, setVisibility] = useState<VISIBILITY>(VISIBILITY.HIDDEN)
   const { data: category } = useCategory({ categoryId })
   const {
-    updateMutation: { mutate, isLoading },
+    updateMutation: { mutate, isPending },
   } = useCategoryMutations()
 
   useEffect(() => {
@@ -34,8 +32,6 @@ export default function CategoryEditDialog({ categoryId }: Props) {
   const handleOnClick = () => {
     mutate({ categoryId, categoryName, visibility })
     setOpen(false)
-    setVisibility(VISIBILITY.HIDDEN)
-    setCategoryName('')
   }
 
   return (
@@ -58,7 +54,7 @@ export default function CategoryEditDialog({ categoryId }: Props) {
 
           <div className="space-y-1">
             <Label htmlFor="edit-visibility">노출 여부</Label>
-            <Select value={visibility} onValueChange={(val) => setVisibility(val as 'VISIBLE' | 'HIDDEN')}>
+            <Select value={visibility} onValueChange={(val) => setVisibility(val as VISIBILITY)}>
               <SelectTrigger id="edit-visibility">
                 <SelectValue placeholder="노출 여부 선택" />
               </SelectTrigger>
@@ -71,7 +67,7 @@ export default function CategoryEditDialog({ categoryId }: Props) {
         </div>
 
         <DialogFooter>
-          <Button onClick={handleOnClick} disabled={isLoading}>
+          <Button onClick={handleOnClick} disabled={isPending}>
             저장
           </Button>
         </DialogFooter>
