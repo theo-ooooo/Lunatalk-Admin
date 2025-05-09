@@ -19,12 +19,12 @@ export default function LoginPage() {
           <CardContent className="space-y-4">
             <div>
               <Input {...register('username', { required: '아이디를 입력하세요.' })} placeholder="아이디" autoComplete="username" />
-              {errors.username && <p className="mt-1 text-sm text-red-500">{errors.username.message}</p>}
+              {errors.username && <p className="mt-1 text-sm text-red-500">{errors.username.message?.toString()}</p>}
             </div>
 
             <div>
               <Input {...register('password', { required: '비밀번호를 입력하세요.' })} type="password" placeholder="비밀번호" autoComplete="current-password" />
-              {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password.message}</p>}
+              {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password.message?.toString()}</p>}
             </div>
 
             {error && <p className="text-sm text-red-500 text-center">{error}</p>}
