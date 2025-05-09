@@ -1,11 +1,11 @@
 import { createBrowserRouter } from 'react-router'
-import AdminLayout from '@/layouts/AdminLayout'
-import LoginPage from '@/features/auth/pages/LoginPage'
-import DashboardPage from '@/features/dashboard/pages/DashboardPage'
-import ProductListPage from '@/features/products/pages/ProductListPage'
-import MemberListPage from '@/features/members/pages/MemberListPage'
-import OrderListPage from '@/features/orders/pages/OrderListPage'
-import CategoryListPage from '@/features/categories/pages/CategoryListPage'
+import AdminLayout from '@Layouts/AdminLayout'
+import LoginPage from '@Features/auth/pages/LoginPage'
+import DashboardPage from '@Features/dashboard/pages/DashboardPage'
+import ProductListPage from '@Features/products/pages/ProductListPage'
+import MemberListPage from '@Features/members/pages/MemberListPage'
+import OrderListPage from '@Features/orders/pages/OrderListPage'
+import CategoryListPage from '@Features/categories/pages/CategoryListPage'
 
 export const router = createBrowserRouter([
   {
