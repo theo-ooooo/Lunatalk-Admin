@@ -1,12 +1,13 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createCategory, deleteCategory, updateCategory } from '../api/categoiresApi'
 import type { VISIBILITY } from '../interface'
+import categoriesKey from '@/lib/constants/queryKeys/categories'
 
 export function useCategoryMutations() {
   const queryClient = useQueryClient()
 
   const invalidateQueries = () => {
-    queryClient.invalidateQueries({ queryKey: ['categories'] })
+    queryClient.invalidateQueries({ queryKey: categoriesKey.all })
   }
 
   const createMutation = useMutation({
