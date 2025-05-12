@@ -9,6 +9,7 @@ import CategoryListPage from '@/features/categories/pages/CategoryListPage'
 import RedirectIfAuthenticated from '@/features/auth/RedirectIfAuthenticated'
 import RequireAuth from '@/features/auth/RequireAuth'
 import LogoutPage from '@/features/auth/pages/LogoutPage'
+import MemberDetailPage from '@/features/members/pages/MemberDeatailPage'
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
           {
             path: '/members',
             element: <MemberListPage />,
+          },
+          {
+            path: '/members/:id',
+            element: <MemberDetailPage />,
           },
           {
             path: '/orders',

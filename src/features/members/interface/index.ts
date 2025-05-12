@@ -1,16 +1,16 @@
+import type { Order } from '@/features/orders/interface'
+import type { PageResponse } from '@/interface/common'
+
 export interface Member {
   memberId: number
   username: string
   nickname: string
   phone: string
   email: string
+  profileImgUrl: string | null
   createdAt: string
 }
 
-export interface MemberResponse {
-  content: Member[]
-  totalPages: number
-  totalElements: number
-  number: number
-  size: number
-}
+export interface MembersPageResponse extends PageResponse<Member[]> {}
+
+export interface MemberOrdersPageResponse extends PageResponse<Order[]> {}

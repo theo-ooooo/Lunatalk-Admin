@@ -2,7 +2,7 @@
 
 import { useNavigate } from 'react-router'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import type { Member } from '../interface/index'
+import type { Member } from '../../interface/index'
 
 export default function MemberTable({ members }: { members: Member[] }) {
   const navigate = useNavigate()
@@ -21,7 +21,7 @@ export default function MemberTable({ members }: { members: Member[] }) {
       </TableHeader>
       <TableBody>
         {members.map((member) => (
-          <TableRow key={member.memberId} onClick={() => navigate(`/members/edit/${member.memberId}`)} className="cursor-pointer hover:bg-muted transition-colors">
+          <TableRow key={member.memberId} onClick={() => navigate(`/members/${member.memberId}`)} className="cursor-pointer hover:bg-muted transition-colors">
             <TableCell>{member.memberId}</TableCell>
             <TableCell>{member.username}</TableCell>
             <TableCell>{member.nickname}</TableCell>

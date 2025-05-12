@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useMemberList } from '../hooks/useMemberList'
-import MemberTable from '../components/MemberTable'
-import MemberPagination from '../components/MemberPagination'
+import MemberTable from '../components/members/MemberTable'
+import MemberPagination from '../components/members/MemberPagination'
 
 export default function MemberListPage() {
   const [page, setPage] = useState(0)

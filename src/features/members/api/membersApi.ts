@@ -1,7 +1,19 @@
 import { instance } from '@/lib/api'
-import type { MemberResponse } from '../interface'
+import type { Member, MemberOrdersPageResponse, MembersPageResponse } from '../interface'
 
-export async function getMembers(page: number): Promise<MemberResponse> {
-  const { data } = await instance.get(`/members?page=${page}&size=10`)
+const size = 10
+
+export async function getMembers(page: number): Promise<MembersPageResponse> {
+  const { data } = await instance.get(`/members?page=${page}&size=${size}`)
+  return data.data
+}
+
+export async function getMemberDetail(memberId: number): Promise<Member> {
+  const { data } = await instance.get(`/members/${memberId}`)
+  return data.data
+}
+
+export async function getMemberOrders(memberId: number, page: number): Promise<MemberOrdersPageResponse> {
+  const { data } = await instance.get(`/members/${memberId}/orders?page=${page}&size=${size}`)
   return data.data
 }
