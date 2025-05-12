@@ -26,7 +26,7 @@ export default function MemberOrderTable({ orders }: { orders: Order[] }) {
                 <TableCell colSpan={4}>
                   <div className="flex justify-between text-sm px-4 py-2">
                     <div>
-                      <div className="font-medium">{item.priductName}</div>
+                      <div className="font-medium">{item.productName}</div>
                       <div className="text-muted-foreground">색상: {item.color}</div>
                     </div>
                     <div className="text-right">
