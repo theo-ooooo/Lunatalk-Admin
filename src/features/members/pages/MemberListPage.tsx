@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useMemberList } from '../hooks/useMemberList'
 import MemberTable from '../components/members/MemberTable'
 import MemberPagination from '../components/members/MemberPagination'
+import Pagination from '@/components/shared/Pagination'
 
 export default function MemberListPage() {
   const [page, setPage] = useState(0)
@@ -29,7 +30,7 @@ export default function MemberListPage() {
 
       {/* 페이지네이션 */}
       <div className="mt-6">
-        <MemberPagination currentPage={data.number} totalPages={data.totalPages} onPageChange={(p) => setPage(p)} />
+        <Pagination currentPage={data.number} totalPages={data.totalPages} onPageChange={(p) => setPage(p)} />
       </div>
     </div>
   )
