@@ -1,4 +1,3 @@
-import { Button } from '@/components/ui/button'
 import type { Product } from '../interface'
 
 interface Props {

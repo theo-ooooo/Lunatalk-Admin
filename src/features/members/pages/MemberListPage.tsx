@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { useMemberList } from '../hooks/useMemberList'
 import MemberTable from '../components/members/MemberTable'
-import MemberPagination from '../components/members/MemberPagination'
 import Pagination from '@/components/shared/Pagination'
 
 export default function MemberListPage() {
