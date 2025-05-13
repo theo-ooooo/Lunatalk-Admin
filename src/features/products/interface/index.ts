@@ -16,3 +16,11 @@ export interface Product {
 }
 
 export interface ProductListPageResponse extends PageResponse<Product[]> {}
+
+export interface ProductCreateRequest {
+  name: string
+  price: number
+  quantity: number
+  visibility: 'VISIBLE' | 'HIDDEN'
+  colors: string[]
+}

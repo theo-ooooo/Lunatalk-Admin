@@ -11,6 +11,7 @@ import RequireAuth from '@/features/auth/RequireAuth'
 import LogoutPage from '@/features/auth/pages/LogoutPage'
 import MemberDetailPage from '@/features/members/pages/MemberDeatailPage'
 import OrderDetailPage from '@/features/orders/pages/OrderDetailPage'
+import ProductCreatePage from '@/features/products/pages/ProductCreatePage'
 
 export const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const router = createBrowserRouter([
           {
             path: '/products',
             element: <ProductListPage />,
+          },
+          {
+            path: '/products/new',
+            element: <ProductCreatePage />,
           },
           {
             path: '/members',
