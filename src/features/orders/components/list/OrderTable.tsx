@@ -20,7 +20,7 @@ export default function OrderTable({ orders }: { orders: Order[] }) {
       </TableHeader>
       <TableBody>
         {orders.map((order) => (
-          <TableRow key={order.orderId} className="hover:bg-muted cursor-pointer" onClick={() => navigate(`/orders/${order.orderId}`)}>
+          <TableRow key={order.orderId} className="hover:bg-muted cursor-pointer" onClick={() => navigate(`/orders/${order.orderNumber}`)}>
             <TableCell className="font-mono text-sm text-blue-600 underline">{order.orderNumber}</TableCell>
             <TableCell>{order.nickname}</TableCell>
             <TableCell>

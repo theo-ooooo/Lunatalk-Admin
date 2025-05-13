@@ -1,26 +1,7 @@
 import { useState, Suspense } from 'react'
 import type { OrderFilterParams } from '../interface'
-import { useOrderList } from '../\bhooks/useOrderList'
 import OrderFilterForm from '../components/list/OrderFilterForm'
-import OrderPagination from '../components/list/OrderPagination'
-import OrderTable from '../components/list/OrderTable'
-
-function OrderListContent({ page, filters, setPage }: { page: number; filters: OrderFilterParams; setPage: (p: number) => void }) {
-  const { data } = useOrderList({ page, ...filters })
-
-  if (!data || data.content.length === 0) {
-    return <p className="text-center text-muted-foreground py-20">주문 내역이 없습니다~</p>
-  }
-
-  return (
-    <>
-      <div className="rounded-2xl border bg-white shadow-sm">
-        <OrderTable orders={data.content} />
-      </div>
-      <OrderPagination currentPage={data.number} totalPages={data.totalPages} onPageChange={setPage} />
-    </>
-  )
-}
+import OrderListContent from '../components/list/OrderListSection'
 
 export default function OrderListPage() {
   const [page, setPage] = useState(0)

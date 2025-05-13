@@ -10,6 +10,7 @@ import RedirectIfAuthenticated from '@/features/auth/RedirectIfAuthenticated'
 import RequireAuth from '@/features/auth/RequireAuth'
 import LogoutPage from '@/features/auth/pages/LogoutPage'
 import MemberDetailPage from '@/features/members/pages/MemberDeatailPage'
+import OrderDetailPage from '@/features/orders/pages/OrderDetailPage'
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
           {
             path: '/orders',
             element: <OrderListPage />,
+          },
+          {
+            path: '/orders/:orderNumber',
+            element: <OrderDetailPage />,
           },
           {
             path: '/categories',
