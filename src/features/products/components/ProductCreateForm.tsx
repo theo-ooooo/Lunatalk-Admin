@@ -3,15 +3,8 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Button } from '@/components/ui/button'
 import { Select, SelectTrigger, SelectContent, SelectItem, SelectValue } from '@/components/ui/select'
-import { useCreateProduct } from '../hooks/useCreateProduct'
-
-type FormValues = {
-  name: string
-  price: number
-  quantity: number
-  visibility: 'VISIBLE' | 'HIDDEN'
-  colors: { value: string }[]
-}
+import productMutation from '../hooks/mutation/product'
+import type { FormValues } from '../interface'
 
 const visibilityOptions = [
   { value: 'VISIBLE', label: '노출' },
@@ -34,7 +27,7 @@ export default function ProductCreateForm() {
     },
   })
 
-  const { mutate } = useCreateProduct()
+  const { createMutate } = productMutation()
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -47,7 +40,7 @@ export default function ProductCreateForm() {
       colors: data.colors.map((c) => c.value),
     }
     console.log('제출할 값:', payload)
-    mutate(payload)
+    createMutate(payload)
   }
 
   return (

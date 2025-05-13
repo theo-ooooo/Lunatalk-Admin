@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useProducts } from '../hooks/useProducts'
+import { useProductsQuery } from '../hooks/query/useProductsQuery'
 import ProductListTable from '../components/ProductListTable'
 import Pagination from '@/components/shared/Pagination'
 import { Button } from '@/components/ui/button'
@@ -9,7 +9,7 @@ export default function ProductListPage() {
   const navigate = useNavigate()
   const [page, setPage] = useState(0)
 
-  const { data } = useProducts(page)
+  const { data } = useProductsQuery(page)
 
   return (
     <div className="space-y-6">

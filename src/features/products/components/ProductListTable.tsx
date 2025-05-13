@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import type { Product } from '../interface'
 
 interface Props {
@@ -22,15 +23,21 @@ export default function ProductListTable({ products }: Props) {
           {products.map((product) => {
             const thumbnail = product.images.find((img) => img.imageType === 'PRODUCT_THUMBNAIL')?.imageUrl
             return (
-              <tr key={product.productId} className="border-t">
+              <tr key={product.productId} className="border-t hover:bg-gray-50 transition">
                 <td className="p-2">
-                  {thumbnail ? (
-                    <img src={`https://lunatalk-images.s3.ap-northeast-2.amazonaws.com/${thumbnail}`} alt="썸네일" className="w-16 h-16 object-cover rounded" />
-                  ) : (
-                    <div className="w-16 h-16 bg-gray-200 flex items-center justify-center text-xs text-gray-500">없음</div>
-                  )}
+                  <Link to={`/products/${product.productId}`} className="block">
+                    {thumbnail ? (
+                      <img src={`https://lunatalk-images.s3.ap-northeast-2.amazonaws.com/${thumbnail}`} alt="썸네일" className="w-16 h-16 object-cover rounded" />
+                    ) : (
+                      <div className="w-16 h-16 bg-gray-200 flex items-center justify-center text-xs text-gray-500">없음</div>
+                    )}
+                  </Link>
                 </td>
-                <td className="p-2">{product.name}</td>
+                <td className="p-2">
+                  <Link to={`/products/${product.productId}`} className="text-blue-600 hover:underline">
+                    {product.name}
+                  </Link>
+                </td>
                 <td className="p-2">{product.price.toLocaleString()}원</td>
                 <td className="p-2">{product.colors.length > 0 ? product.colors.join(', ') : '-'}</td>
               </tr>
