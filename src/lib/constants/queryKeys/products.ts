@@ -1,0 +1,3 @@
+export const productsKey = {
+  all: ({ page, productName }: { page: number; productName?: string }) => ['products', page, productName],
+}
