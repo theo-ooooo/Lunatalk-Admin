@@ -1,3 +1,4 @@
+import type { Category } from '@/features/categories/interface'
 import type { PageResponse } from '@/interface/common'
 
 export interface ProductsSearchParams {
@@ -12,6 +13,7 @@ export interface Product {
   visibility: 'VISIBLE' | 'HIDDEN'
   images: ProductImage[]
   colors: string[]
+  category: Category | null
 }
 
 export interface ProductListPageResponse extends PageResponse<Product[]> {}
@@ -22,6 +24,7 @@ export interface ProductCreateAndUpdateRequest {
   quantity: number
   visibility: 'VISIBLE' | 'HIDDEN'
   colors: string[]
+  categoryId: number | null
 }
 
 export interface FormValues {
@@ -30,6 +33,7 @@ export interface FormValues {
   quantity: number
   visibility: 'VISIBLE' | 'HIDDEN'
   colors: { value: string }[]
+  categoryId: number | null
 }
 
 export interface ProductPresignedUrlResponse {

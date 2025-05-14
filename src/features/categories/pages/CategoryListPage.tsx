@@ -1,9 +1,9 @@
-import { useCategories } from '../hooks/useCategories'
+import { useCategoriesQuery } from '../hooks/query/useCategoriesQuery'
 import CategoryTable from '../components/CategoryTable'
 import CategoryAddButton from '../components/CategoryAddButton'
 
 export default function CategoryListPage() {
-  const { data: categories, isLoading, error } = useCategories()
+  const { data: categories, isLoading, error } = useCategoriesQuery()
 
   if (isLoading) {
     return <p className="text-center py-20 text-sm text-muted-foreground">로딩 중...</p>

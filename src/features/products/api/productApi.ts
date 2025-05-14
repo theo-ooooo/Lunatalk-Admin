@@ -12,8 +12,8 @@ export async function getProduct({ productId }: { productId: number }): Promise<
   return data.data
 }
 
-export async function createProduct({ name, price, quantity, visibility, colors }: ProductCreateAndUpdateRequest): Promise<void> {
-  await instance.post('/products/create', { name, price, quantity, visibility, colors })
+export async function createProduct({ name, price, quantity, visibility, colors, categoryId }: ProductCreateAndUpdateRequest): Promise<void> {
+  await instance.post('/products/create', { name, price, quantity, visibility, colors, categoryId })
 }
 
 export async function updatePorduct({ productId, ...rest }: { productId: number } & ProductCreateAndUpdateRequest) {

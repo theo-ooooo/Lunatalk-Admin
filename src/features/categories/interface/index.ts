@@ -3,6 +3,7 @@ export interface Category {
   categoryName: string
   status: string
   visibility: VISIBILITY
+  productCount?: number
 }
 
 export enum VISIBILITY {

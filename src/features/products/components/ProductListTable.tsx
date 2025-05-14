@@ -1,5 +1,6 @@
 import { Link } from 'react-router'
 import type { Product } from '../interface'
+import { Badge } from 'lucide-react'
 
 interface Props {
   products: Product[]
@@ -16,6 +17,7 @@ export default function ProductListTable({ products }: Props) {
             <th className="p-2 text-left">썸네일</th>
             <th className="p-2 text-left">상품명</th>
             <th className="p-2 text-left">가격</th>
+            <th className="p-2 text-left">카테고리</th>
             <th className="p-2 text-left">색상</th>
           </tr>
         </thead>
@@ -39,6 +41,14 @@ export default function ProductListTable({ products }: Props) {
                   </Link>
                 </td>
                 <td className="p-2">{product.price.toLocaleString()}원</td>
+                <td className="p-2">
+                  {product.category?.categoryName ? (
+                    <span className="inline-flex items-center rounded-full bg-blue-100 px-2 py-0.5 text-xs font-medium text-blue-700">{product.category.categoryName}</span>
+                  ) : (
+                    <span className="text-muted-foreground text-xs">없음</span>
+                  )}
+                </td>
+
                 <td className="p-2">{product.colors.length > 0 ? product.colors.join(', ') : '-'}</td>
               </tr>
             )

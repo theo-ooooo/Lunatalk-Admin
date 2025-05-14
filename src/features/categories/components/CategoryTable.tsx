@@ -21,6 +21,7 @@ export default function CategoryTable({ categories }: Props) {
             <th className="px-6 py-3 text-left font-semibold text-muted-foreground">카테고리명</th>
             <th className="px-6 py-3 text-left font-semibold text-muted-foreground">상태</th>
             <th className="px-6 py-3 text-left font-semibold text-muted-foreground">노출</th>
+            <th className="px-6 py-3 text-left font-semibold text-muted-foreground">상품 갯수</th>
             <th className="px-6 py-3 text-center font-semibold text-muted-foreground">액션</th>
           </tr>
         </thead>
@@ -34,6 +35,9 @@ export default function CategoryTable({ categories }: Props) {
               </td>
               <td className="px-6 py-4">
                 <Badge variant={cat.visibility === 'VISIBLE' ? 'secondary' : 'outline'}>{cat.visibility}</Badge>
+              </td>
+              <td className="px-6 py-4">
+                <Badge variant={'outline'}>{cat.productCount || 0}</Badge>
               </td>
               <td className="px-6 py-4 text-right space-x-2 flex gap-3 justify-center">
                 <CategoryEditButton categoryId={cat.categoryId} />
