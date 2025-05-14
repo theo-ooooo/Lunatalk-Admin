@@ -1,6 +1,5 @@
 import { Link } from 'react-router'
 import type { Product } from '../interface'
-import { Badge } from 'lucide-react'
 
 interface Props {
   products: Product[]
