@@ -8,6 +8,7 @@ const menu = [
   { label: '카테고리 관리', path: '/categories' },
   { label: '회원 관리', path: '/members' },
   { label: '상품 관리', path: '/products' },
+  { label: '기획전 관리', path: '/exhibitions' },
 ]
 
 export default function Sidebar() {

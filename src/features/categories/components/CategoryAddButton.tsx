@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
 import { Plus } from 'lucide-react'
 import { useCategoryMutations } from '../hooks/useCategoryMutations'
-import { VISIBILITY } from '../interface'
+import { VISIBILITY } from '@/interface/common'
 
 export default function CategoryAddButton() {
   const [open, setOpen] = useState(false)

@@ -7,3 +7,8 @@ export interface PageResponse<T> {
   first: boolean
   last: boolean
 }
+
+export enum VISIBILITY {
+  HIDDEN = 'HIDDEN',
+  VISIBLE = 'VISIBLE',
+}

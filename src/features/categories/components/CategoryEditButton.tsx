@@ -7,7 +7,7 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@
 import { Pencil } from 'lucide-react'
 import { useCategoryMutations } from '../hooks/useCategoryMutations'
 import { useCategory } from '../hooks/useCategory'
-import { VISIBILITY } from '../interface'
+import { VISIBILITY } from '@/interface/common'
 
 interface Props {
   categoryId: number

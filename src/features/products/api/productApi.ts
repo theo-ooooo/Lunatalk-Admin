@@ -1,8 +1,8 @@
 import { instance } from '@/lib/api'
 import type { Product, ProductCreateAndUpdateRequest, ProductListPageResponse, ProductPresignedUrlResponse, ProductsSearchParams } from '../interface'
 
-export async function getProducts({ page, productName }: { page: number } & ProductsSearchParams): Promise<ProductListPageResponse> {
-  const { data } = await instance.get('/products', { params: { page, size: 10, productName } })
+export async function getProducts({ page, productName, size = 10 }: { page: number; size?: number } & ProductsSearchParams): Promise<ProductListPageResponse> {
+  const { data } = await instance.get('/products', { params: { page, size: size, productName } })
   return data.data
 }
 

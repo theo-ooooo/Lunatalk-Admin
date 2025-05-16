@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { createCategory, deleteCategory, updateCategory } from '../api/categoiresApi'
-import type { VISIBILITY } from '../interface'
 import categoriesKey from '@/lib/constants/queryKeys/categories'
+import type { VISIBILITY } from '@/interface/common'
 
 export function useCategoryMutations() {
   const queryClient = useQueryClient()
