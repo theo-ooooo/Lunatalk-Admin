@@ -1,6 +1,6 @@
 import { useParams } from 'react-router'
 
-import { useOrderDetail } from '../\bhooks/useOrderDetail'
+import { useOrderDetail } from '../hooks/useOrderDetail'
 import { Suspense } from 'react'
 import OrderDetailSection from '../components/detail/OrderDetailSection'
 

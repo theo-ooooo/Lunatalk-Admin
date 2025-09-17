@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from '@/components/ui/select'
 import type { OrderDetail, Delivery } from '../../interface'
 import { Link } from 'react-router'
-import { useOrderMutations } from '../../\bhooks/useOrderMutations'
+import { useOrderMutations } from '../../hooks/useOrderMutations'
 import dayjs from 'dayjs'
 
 interface Props {
