@@ -13,3 +13,12 @@ export async function deleteExhibition({ exhibitionId }: { exhibitionId: number 
 export async function createExhibition(request: CreateExhibitionRequest): Promise<void> {
   await instance.post('/exhibitions', request)
 }
+
+export async function getExhibition(exhibitionId: number): Promise<Exhibition> {
+  const { data } = await instance.get(`/exhibitions/${exhibitionId}`)
+  return data.data
+}
+
+export async function updateExhibition(exhibitionId: number, request: CreateExhibitionRequest): Promise<void> {
+  await instance.put(`/exhibitions/${exhibitionId}`, request)
+}

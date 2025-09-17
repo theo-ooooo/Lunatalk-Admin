@@ -15,6 +15,8 @@ import ProductCreatePage from '@/features/products/pages/ProductCreatePage'
 import ProductDetailPage from '@/features/products/pages/ProductDetailPage'
 import ExhibitionListPage from '@/features/exhibitions/pages/ExhibitionListPage'
 import ExhibitionCreatePage from '@/features/exhibitions/pages/ExhibitionCreatePage'
+import ExhibitionDetailPage from '@/features/exhibitions/pages/ExhibitionDetailPage'
+import ExhibitionEditPage from '@/features/exhibitions/pages/ExhibitionEditPage'
 
 export const router = createBrowserRouter([
   {
@@ -67,6 +69,14 @@ export const router = createBrowserRouter([
           {
             path: '/exhibitions/create',
             element: <ExhibitionCreatePage />,
+          },
+          {
+            path: '/exhibitions/:exhibitionId',
+            element: <ExhibitionDetailPage />,
+          },
+          {
+            path: '/exhibitions/:exhibitionId/edit',
+            element: <ExhibitionEditPage />,
           },
         ],
       },

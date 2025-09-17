@@ -37,7 +37,7 @@ export default function ExhibitionListPage() {
           {exhibitions?.map((exhibition) => (
             <tr key={exhibition.exhibitionId} className="border-t">
               <td className="p-2">
-                <Link to={`/admin/exhibitions/${exhibition.exhibitionId}`} className="hover:underline">
+                <Link to={`/exhibitions/${exhibition.exhibitionId}`} className="hover:underline">
                   {exhibition.title}
                 </Link>
               </td>
@@ -49,9 +49,9 @@ export default function ExhibitionListPage() {
               </td>
               <td className="p-2 text-center">{exhibition.products.length}</td>
               <td className="p-2 flex gap-2">
-                <Link to={`/admin/exhibitions/${exhibition.exhibitionId}`}>
+                <Link to={`/exhibitions/${exhibition.exhibitionId}`}>
                   <Button variant="outline" size="sm">
-                    수정
+                    상세보기
                   </Button>
                 </Link>
                 <ExhibitionDeleteDialog exhibitionTitle={exhibition.title} onDelete={() => handleDelete(exhibition.exhibitionId)} />
