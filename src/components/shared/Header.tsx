@@ -13,7 +13,7 @@ export default function Header() {
         size="sm"
         onClick={() => {
           // 로그아웃 처리 등 여기에
-          navigate('/login')
+          navigate('/logout')
         }}
       >
         로그아웃

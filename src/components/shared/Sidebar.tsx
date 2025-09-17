@@ -8,6 +8,7 @@ const menu = [
   { label: '카테고리 관리', path: '/categories' },
   { label: '회원 관리', path: '/members' },
   { label: '상품 관리', path: '/products' },
+  { label: '기획전 관리', path: '/exhibitions' },
 ]
 
 export default function Sidebar() {
@@ -15,7 +16,9 @@ export default function Sidebar() {
 
   return (
     <aside className="w-60 h-screen bg-gray-100 dark:bg-gray-900 border-r p-4">
-      <h1 className="text-xl font-bold mb-6">Admin</h1>
+      <div className="flex justify-center">
+        <img src="https://admin.lunatalk.co.kr/static/media/logo.e0e49014f4ed6f070031.jpg" alt="Lunatalk Logo" className="h-12 mb-6" />
+      </div>
       <nav className="flex flex-col gap-2">
         {menu.map(({ label, path }) => (
           <Link
