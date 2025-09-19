@@ -45,11 +45,6 @@ export default function ExhibitionCreatePage() {
 
   const onSubmit = useExhibitionSubmit()
 
-  // watch for visibility / productIds changes
-  useEffect(() => {
-    setValue('productIds', productIds, { shouldValidate: true })
-  }, [productIds])
-
   useEffect(() => {
     setValue('productIds', productIds, { shouldValidate: true })
   }, [productIds])
