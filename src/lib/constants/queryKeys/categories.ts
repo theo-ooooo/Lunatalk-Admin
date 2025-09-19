@@ -1,6 +1,6 @@
 const categoriesKey = {
-  all: ['categoires'],
-  detail: (categoryId: number) => ['category', categoryId],
+  all: ['categories'],
+  detail: (categoryId: number) => [categoriesKey.all, 'category', categoryId],
 }
 
 export default categoriesKey
