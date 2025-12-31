@@ -15,6 +15,8 @@ import ProductCreatePage from '@/features/products/pages/ProductCreatePage'
 import ProductDetailPage from '@/features/products/pages/ProductDetailPage'
 import ExhibitionListPage from '@/features/exhibitions/pages/ExhibitionListPage'
 import ExhibitionCreatePage from '@/features/exhibitions/pages/ExhibitionCreatePage'
+import InquiryListPage from '@/features/inquiries/pages/InquiryListPage'
+import InquiryDetailPage from '@/features/inquiries/pages/InquiryDetailPage'
 import ExhibitionDetailPage from '@/features/exhibitions/pages/ExhibitionDetailPage'
 import ExhibitionEditPage from '@/features/exhibitions/pages/ExhibitionEditPage'
 
@@ -77,6 +79,14 @@ export const router = createBrowserRouter([
           {
             path: '/exhibitions/:exhibitionId/edit',
             element: <ExhibitionEditPage />,
+          },
+          {
+            path: '/inquiries',
+            element: <InquiryListPage />,
+          },
+          {
+            path: '/inquiries/:id',
+            element: <InquiryDetailPage />,
           },
         ],
       },
