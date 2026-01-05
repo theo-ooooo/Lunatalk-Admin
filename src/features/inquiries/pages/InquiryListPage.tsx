@@ -2,7 +2,6 @@ import { useState, Suspense } from 'react'
 import type { InquiryListParams } from '../interface'
 import InquiryFilterForm from '../components/InquiryFilterForm'
 import InquiryListContent from '../components/InquiryListSection'
-import Pagination from '@/components/shared/Pagination'
 
 export default function InquiryListPage() {
   const [page, setPage] = useState(0)
