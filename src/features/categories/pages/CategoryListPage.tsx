@@ -14,12 +14,12 @@ export default function CategoryListPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight">카테고리 목록</h1>
-        <p className="text-muted-foreground text-sm mt-1">등록된 카테고리를 확인하고 관리하세요.</p>
-      </div>
-      <div className="flex justify-end mb-4">
+    <div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div className="space-y-1">
+          <h2 className="text-2xl font-bold tracking-tight">카테고리 목록</h2>
+          <p className="text-sm text-muted-foreground">등록된 카테고리를 확인하고 관리하세요.</p>
+        </div>
         <CategoryAddButton />
       </div>
       {categories && <CategoryTable categories={categories} />}

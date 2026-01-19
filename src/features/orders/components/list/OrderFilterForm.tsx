@@ -60,44 +60,82 @@ export default function OrderFilterForm({ onSearch }: Props) {
   // }
 
   return (
-    <form onSubmit={handleSubmit} className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
-      <Input className="bg-white" name="orderNumber" placeholder="주문번호" value={form.orderNumber} onChange={handleChange} />
-      <Input className="bg-white" name="nickname" placeholder="닉네임" value={form.nickname} onChange={handleChange} />
-      <Input className="bg-white" name="email" placeholder="이메일" value={form.email} onChange={handleChange} />
-      <Input className="bg-white" name="phone" placeholder="전화번호" value={form.phone} onChange={handleChange} />
-      <Input className="bg-white" name="username" placeholder="아이디" value={form.username} onChange={handleChange} />
-
-      <Select value={form.status} onValueChange={(val) => setForm({ ...form, status: val })}>
-        <SelectTrigger className="bg-white">
-          <SelectValue placeholder="주문 상태 선택" />
-        </SelectTrigger>
-
-        <SelectContent>
-          <SelectItem value="ORDERED">주문완료</SelectItem>
-          <SelectItem value="PAYMENT_FAILED">결제실패</SelectItem>
-          <SelectItem value="CANCELLED">결제취소</SelectItem>
-          <SelectItem value="SHIPPED">배송중</SelectItem>
-          <SelectItem value="DELIVERED">배송완료</SelectItem>
-        </SelectContent>
-      </Select>
-
-      {/* <Popover> */}
-      {/* <PopoverTrigger asChild>
-          <Button variant="outline" className="bg-white text-left font-normal col-span-2">
-            {dateRange.from && dateRange.to ? `${format(dateRange.from, 'yyyy-MM-dd')} ~ ${format(dateRange.to, 'yyyy-MM-dd')}` : '주문일 범위 선택'}
+    <div className="bg-white dark:bg-gray-900 rounded-lg border shadow-sm p-6 mb-6">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">주문번호</label>
+            <Input
+              className="bg-white dark:bg-gray-800"
+              name="orderNumber"
+              placeholder="주문번호 검색"
+              value={form.orderNumber}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">닉네임</label>
+            <Input
+              className="bg-white dark:bg-gray-800"
+              name="nickname"
+              placeholder="닉네임 검색"
+              value={form.nickname}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">이메일</label>
+            <Input
+              className="bg-white dark:bg-gray-800"
+              name="email"
+              placeholder="이메일 검색"
+              value={form.email}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">전화번호</label>
+            <Input
+              className="bg-white dark:bg-gray-800"
+              name="phone"
+              placeholder="전화번호 검색"
+              value={form.phone}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">아이디</label>
+            <Input
+              className="bg-white dark:bg-gray-800"
+              name="username"
+              placeholder="아이디 검색"
+              value={form.username}
+              onChange={handleChange}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">주문 상태</label>
+            <Select value={form.status} onValueChange={(val) => setForm({ ...form, status: val })}>
+              <SelectTrigger className="bg-white dark:bg-gray-800">
+                <SelectValue placeholder="전체" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="ORDERED">주문완료</SelectItem>
+                <SelectItem value="PAYMENT_FAILED">결제실패</SelectItem>
+                <SelectItem value="CANCELLED">결제취소</SelectItem>
+                <SelectItem value="SHIPPED">배송중</SelectItem>
+                <SelectItem value="DELIVERED">배송완료</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </div>
+        <div className="flex justify-end gap-2 pt-2 border-t">
+          <Button type="button" variant="outline" onClick={handleReset}>
+            초기화
           </Button>
-        </PopoverTrigger> */}
-      {/* <PopoverContent align="start" className="w-auto p-0">
-          <Calendar mode="range" selected={dateRange} onSelect={handleDateRangeChange} numberOfMonths={2} />
-        </PopoverContent> */}
-      {/* </Popover> */}
-
-      <div className="col-span-2 md:col-span-3 flex justify-end gap-2">
-        <Button type="button" variant="secondary" onClick={handleReset}>
-          초기화
-        </Button>
-        <Button type="submit">검색</Button>
-      </div>
-    </form>
+          <Button type="submit">검색</Button>
+        </div>
+      </form>
+    </div>
   )
 }

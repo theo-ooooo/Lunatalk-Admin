@@ -16,21 +16,17 @@ export default function MemberListPage() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12">
-      <div className="mb-6">
-        <h1 className="text-3xl font-bold tracking-tight">회원 목록</h1>
-        <p className="text-muted-foreground text-sm mt-1">가입된 회원을 확인하고 관리할 수 있습니다.</p>
+    <div className="space-y-6">
+      <div className="space-y-1">
+        <h2 className="text-2xl font-bold tracking-tight">회원 목록</h2>
+        <p className="text-sm text-muted-foreground">가입된 회원을 확인하고 관리할 수 있습니다.</p>
       </div>
 
-      {/* 회원 테이블 */}
-      <div className="rounded-2xl border bg-white shadow-sm">
+      <div className="bg-white dark:bg-gray-900 rounded-lg border shadow-sm overflow-hidden">
         <MemberTable members={data.content} />
       </div>
 
-      {/* 페이지네이션 */}
-      <div className="mt-6">
-        <Pagination currentPage={data.number} totalPages={data.totalPages} onPageChange={(p) => setPage(p)} />
-      </div>
+      <Pagination currentPage={data.number} totalPages={data.totalPages} onPageChange={(p) => setPage(p)} />
     </div>
   )
 }
