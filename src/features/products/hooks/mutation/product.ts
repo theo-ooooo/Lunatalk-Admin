@@ -14,7 +14,7 @@ const productMutation = (productId?: number) => {
 
   const { mutate: createMutate } = useMutation({
     mutationFn: createProduct,
-    onSuccess: () => redirectOnSuccess(),
+    onSuccess: redirectOnSuccess,
   })
   const { mutate: updateMutate } = useMutation<void, Error, FormValues>({
     mutationFn: async (data: FormValues) => {
@@ -32,7 +32,7 @@ const productMutation = (productId?: number) => {
       if (!productId) return
       deleteProduct({ productId })
     },
-    onSuccess: () => redirectOnSuccess(),
+    onSuccess: redirectOnSuccess,
   })
 
   return {
