@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -12,9 +12,34 @@ interface Props {
   orderDetail: OrderDetail
 }
 
+// 한글 status를 영어로 변환하는 함수
+const convertStatusToEnglish = (status: string): string => {
+  const statusMap: Record<string, string> = {
+    '주문완료': 'ORDERED',
+    '결제 완료': 'ORDERED',
+    '결제완료': 'ORDERED',
+    '결제 실패': 'PAYMENT_FAILED',
+    '결제실패': 'PAYMENT_FAILED',
+    '결제 취소': 'CANCELLED',
+    '결제취소': 'CANCELLED',
+    '배송중': 'SHIPPED',
+    '배송 완료': 'DELIVERED',
+    '배송완료': 'DELIVERED',
+  }
+  return statusMap[status] || status
+}
+
 export default function OrderDetailSection({ orderDetail }: Props) {
-  const [orderStatus, setOrderStatus] = useState(orderDetail.status)
+  // 한글 status를 영어로 변환하여 state에 저장
+  const initialEnglishStatus = useMemo(() => convertStatusToEnglish(orderDetail.status), [orderDetail.status])
+  const [orderStatus, setOrderStatus] = useState(initialEnglishStatus)
   const [deliveries, setDeliveries] = useState(orderDetail.deliveries)
+
+  // orderDetail이 업데이트될 때 orderStatus도 업데이트
+  useEffect(() => {
+    const englishStatus = convertStatusToEnglish(orderDetail.status)
+    setOrderStatus(englishStatus)
+  }, [orderDetail.status])
 
   const {
     orderMutaion: { mutate: orderMutate, isPending: isOrderPending },
@@ -22,6 +47,7 @@ export default function OrderDetailSection({ orderDetail }: Props) {
   } = useOrderMutations(orderDetail.orderNumber)
 
   const handleOrderStatusSave = () => {
+    // API는 영어 status를 받으므로 그대로 전달
     orderMutate({ orderNumber: orderDetail.orderNumber, status: orderStatus })
   }
 
