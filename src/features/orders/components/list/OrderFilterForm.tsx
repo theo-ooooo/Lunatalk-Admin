@@ -13,7 +13,6 @@ export default function OrderFilterForm({ onSearch }: Props) {
   const [form, setForm] = useState<OrderFilterParams>({
     orderNumber: '',
     status: '',
-    nickname: '',
     email: '',
     phone: '',
     username: '',
@@ -39,7 +38,6 @@ export default function OrderFilterForm({ onSearch }: Props) {
     setForm({
       orderNumber: '',
       status: '',
-      nickname: '',
       email: '',
       phone: '',
       username: '',
@@ -62,7 +60,7 @@ export default function OrderFilterForm({ onSearch }: Props) {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-lg border shadow-sm p-6 mb-6">
       <form onSubmit={handleSubmit} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           <div>
             <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">주문번호</label>
             <Input
@@ -70,16 +68,6 @@ export default function OrderFilterForm({ onSearch }: Props) {
               name="orderNumber"
               placeholder="주문번호 검색"
               value={form.orderNumber}
-              onChange={handleChange}
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">닉네임</label>
-            <Input
-              className="bg-white dark:bg-gray-800"
-              name="nickname"
-              placeholder="닉네임 검색"
-              value={form.nickname}
               onChange={handleChange}
             />
           </div>

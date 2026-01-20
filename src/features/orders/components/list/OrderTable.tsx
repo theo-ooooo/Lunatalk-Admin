@@ -30,7 +30,7 @@ export default function OrderTable({ orders }: { orders: Order[] }) {
                 <TableCell className="font-mono text-sm text-blue-600 dark:text-blue-400 font-medium">
                   {order.orderNumber}
                 </TableCell>
-                <TableCell className="text-gray-900 dark:text-gray-100">{order.nickname}</TableCell>
+                <TableCell className="text-gray-900 dark:text-gray-100">{order.username}</TableCell>
                 <TableCell>
                   <Badge variant="outline" className="text-xs font-normal">
                     {order.status}

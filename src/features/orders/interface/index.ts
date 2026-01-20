@@ -4,7 +4,7 @@ import type { PageResponse } from '@/interface/common'
 export interface Order {
   orderId: number
   orderNumber: string
-  nickname?: string
+  username: string
   status: string
   totalPrice: number
   createdAt: string
@@ -36,7 +36,6 @@ export interface Delivery {
 export interface OrderFilterParams {
   orderNumber?: string
   status?: string
-  nickname?: string
   email?: string
   phone?: string
   username?: string

@@ -10,7 +10,6 @@ export const useOrderList = (params: { page: number } & OrderFilterParams) => {
     ...(params.status && { status: params.status }),
     ...(params.username && { username: params.username }),
     ...(params.email && { email: params.email }),
-    ...(params.nickname && { nickname: params.nickname }),
     ...(params.phone && { phone: params.phone }),
   }).toString()
 
