@@ -3,8 +3,7 @@ import { useState } from 'react'
 import Sidebar from '@/components/shared/Sidebar'
 import Header from '@/components/shared/Header'
 import { Outlet } from 'react-router'
-import { Button } from '@/components/ui/button'
-import { Menu, X } from 'lucide-react'
+
 
 export default function AdminLayout() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
