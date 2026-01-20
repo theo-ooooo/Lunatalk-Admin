@@ -28,16 +28,21 @@ const processQueue = (error: any, token: string | null = null) => {
   failedQueue = []
 }
 
-//TODO: 토큰만료 로직
 instance.interceptors.response.use(
   (res) => res,
   async (err) => {
     const originalRequest = err.config
-    const status = err?.response.status
-    const errorName = err?.response.data?.data?.errorName
+    const status = err?.response?.status
+    const errorName = err?.response?.data?.data?.errorName
     const refreshToken = localStorage.getItem('refreshToken')
 
-    if (refreshToken && status === 401 && errorName === 'AUTH_TOKEN_EXPIRED' && !originalRequest._retry) {
+    // 401 (토큰 만료) 또는 403 (권한 없음) 에러 처리
+    const shouldRefresh = refreshToken && 
+      (status === 401 || status === 403) && 
+      (status === 401 ? errorName === 'AUTH_TOKEN_EXPIRED' : true) &&
+      !originalRequest._retry
+
+    if (shouldRefresh) {
       if (isRefreshing) {
         // 다른 요청에서 refresh 중이면 대기
         return new Promise(function (resolve, reject) {
@@ -72,7 +77,9 @@ instance.interceptors.response.use(
         return instance(originalRequest) // 실패한 원래 요청 재시도
       } catch (err) {
         processQueue(err, null)
-        // 여기서 로그아웃 처리 가능
+        // refresh token 재발급 실패 시 로그아웃 처리
+        localStorage.removeItem('accessToken')
+        localStorage.removeItem('refreshToken')
         window.location.href = '/logout'
         return Promise.reject(err)
       } finally {
