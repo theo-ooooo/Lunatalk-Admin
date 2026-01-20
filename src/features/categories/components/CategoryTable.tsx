@@ -28,47 +28,49 @@ export default function CategoryTable({ categories }: Props) {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-lg border shadow-sm overflow-hidden">
       <div className="overflow-x-auto">
-        <Table>
-          <TableHeader>
-            <TableRow className="bg-gray-50 dark:bg-gray-800/50">
-              <TableHead className="w-[80px] font-semibold text-gray-700 dark:text-gray-300">ID</TableHead>
-              <TableHead className="font-semibold text-gray-700 dark:text-gray-300">카테고리명</TableHead>
-              <TableHead className="w-[100px] font-semibold text-gray-700 dark:text-gray-300">상태</TableHead>
-              <TableHead className="w-[100px] font-semibold text-gray-700 dark:text-gray-300">노출</TableHead>
-              <TableHead className="w-[120px] font-semibold text-gray-700 dark:text-gray-300">상품 갯수</TableHead>
-              <TableHead className="w-[180px] font-semibold text-gray-700 dark:text-gray-300 text-center">액션</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {categories.map((cat) => (
-              <TableRow key={cat.categoryId} className="border-b hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                <TableCell className="font-mono text-xs text-gray-500 dark:text-gray-400">#{cat.categoryId}</TableCell>
-                <TableCell className="font-medium text-gray-900 dark:text-gray-100">{cat.categoryName}</TableCell>
-                <TableCell>
-                  <Badge variant={cat.status === 'ACTIVE' ? 'default' : 'outline'} className="text-xs font-normal">
-                    {cat.status}
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <Badge variant={cat.visibility === 'VISIBLE' ? 'secondary' : 'outline'} className="text-xs font-normal">
-                    {cat.visibility}
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <Badge variant="outline" className="text-xs font-normal">
-                    {cat.productCount || 0}개
-                  </Badge>
-                </TableCell>
-                <TableCell>
-                  <div className="flex gap-2 justify-center">
-                    <CategoryEditButton categoryId={cat.categoryId} />
-                    <CategoryDeleteButton categoryId={cat.categoryId} categoryName={cat.categoryName} />
-                  </div>
-                </TableCell>
+        <div className="min-w-full">
+          <Table>
+            <TableHeader>
+              <TableRow className="bg-gray-50 dark:bg-gray-800/50">
+                <TableHead className="min-w-[60px] sm:w-[80px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">ID</TableHead>
+                <TableHead className="min-w-[120px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">카테고리명</TableHead>
+                <TableHead className="min-w-[80px] sm:w-[100px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">상태</TableHead>
+                <TableHead className="min-w-[80px] sm:w-[100px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">노출</TableHead>
+                <TableHead className="min-w-[100px] sm:w-[120px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">상품 갯수</TableHead>
+                <TableHead className="min-w-[150px] sm:w-[180px] font-semibold text-gray-700 dark:text-gray-300 text-center text-xs sm:text-sm">액션</TableHead>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHeader>
+            <TableBody>
+              {categories.map((cat) => (
+                <TableRow key={cat.categoryId} className="border-b hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                  <TableCell className="font-mono text-xs text-gray-500 dark:text-gray-400">#{cat.categoryId}</TableCell>
+                  <TableCell className="font-medium text-gray-900 dark:text-gray-100 text-xs sm:text-sm">{cat.categoryName}</TableCell>
+                  <TableCell>
+                    <Badge variant={cat.status === 'ACTIVE' ? 'default' : 'outline'} className="text-xs font-normal">
+                      {cat.status}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant={cat.visibility === 'VISIBLE' ? 'secondary' : 'outline'} className="text-xs font-normal">
+                      {cat.visibility}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <Badge variant="outline" className="text-xs font-normal">
+                      {cat.productCount || 0}개
+                    </Badge>
+                  </TableCell>
+                  <TableCell>
+                    <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                      <CategoryEditButton categoryId={cat.categoryId} />
+                      <CategoryDeleteButton categoryId={cat.categoryId} categoryName={cat.categoryName} />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
       </div>
     </div>
   )

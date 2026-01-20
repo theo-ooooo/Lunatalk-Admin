@@ -16,14 +16,14 @@ export default function ExhibitionListPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold tracking-tight">기획전 목록</h2>
-          <p className="text-sm text-muted-foreground">등록된 기획전을 확인하고 관리할 수 있습니다.</p>
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight">기획전 목록</h2>
+          <p className="text-xs sm:text-sm text-muted-foreground">등록된 기획전을 확인하고 관리할 수 있습니다.</p>
         </div>
-        <Link to="/exhibitions/create">
-          <Button size="lg">+ 기획전 추가</Button>
+        <Link to="/exhibitions/create" className="w-full sm:w-auto">
+          <Button size="lg" className="w-full sm:w-auto">+ 기획전 추가</Button>
         </Link>
       </div>
 
@@ -42,55 +42,59 @@ export default function ExhibitionListPage() {
       ) : (
         <div className="bg-white dark:bg-gray-900 rounded-lg border shadow-sm overflow-hidden">
           <div className="overflow-x-auto">
-            <Table>
-              <TableHeader>
-                <TableRow className="bg-gray-50 dark:bg-gray-800/50">
-                  <TableHead className="font-semibold text-gray-700 dark:text-gray-300">제목</TableHead>
-                  <TableHead className="w-[300px] font-semibold text-gray-700 dark:text-gray-300">기간</TableHead>
-                  <TableHead className="w-[120px] font-semibold text-gray-700 dark:text-gray-300">노출 여부</TableHead>
-                  <TableHead className="w-[100px] font-semibold text-gray-700 dark:text-gray-300 text-center">상품 수</TableHead>
-                  <TableHead className="w-[200px] font-semibold text-gray-700 dark:text-gray-300 text-center">관리</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {exhibitions.map((exhibition) => (
-                  <TableRow key={exhibition.exhibitionId} className="border-b hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
-                    <TableCell>
-                      <Link
-                        to={`/exhibitions/${exhibition.exhibitionId}`}
-                        className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
-                      >
-                        {exhibition.title}
-                      </Link>
-                    </TableCell>
-                    <TableCell className="text-sm text-gray-600 dark:text-gray-400">
-                      {dayjs(exhibition.startAt).format('YYYY-MM-DD HH:mm')} ~{' '}
-                      {exhibition.endAt ? dayjs(exhibition.endAt).format('YYYY-MM-DD HH:mm') : '무기한'}
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant={exhibition.visibility === 'VISIBLE' ? 'default' : 'outline'} className="text-xs font-normal">
-                        {exhibition.visibility === 'VISIBLE' ? '노출' : '비노출'}
-                      </Badge>
-                    </TableCell>
-                    <TableCell className="text-center">
-                      <Badge variant="outline" className="text-xs font-normal">
-                        {exhibition.products.length}개
-                      </Badge>
-                    </TableCell>
-                    <TableCell>
-                      <div className="flex gap-2 justify-center">
-                        <Link to={`/exhibitions/${exhibition.exhibitionId}`}>
-                          <Button variant="outline" size="sm">
-                            상세보기
-                          </Button>
-                        </Link>
-                        <ExhibitionDeleteDialog exhibitionTitle={exhibition.title} onDelete={() => handleDelete(exhibition.exhibitionId)} />
-                      </div>
-                    </TableCell>
+            <div className="min-w-full">
+              <Table>
+                <TableHeader>
+                  <TableRow className="bg-gray-50 dark:bg-gray-800/50">
+                    <TableHead className="min-w-[120px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">제목</TableHead>
+                    <TableHead className="min-w-[200px] sm:w-[300px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">기간</TableHead>
+                    <TableHead className="min-w-[100px] sm:w-[120px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">노출 여부</TableHead>
+                    <TableHead className="min-w-[80px] sm:w-[100px] font-semibold text-gray-700 dark:text-gray-300 text-center text-xs sm:text-sm">상품 수</TableHead>
+                    <TableHead className="min-w-[150px] sm:w-[200px] font-semibold text-gray-700 dark:text-gray-300 text-center text-xs sm:text-sm">관리</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {exhibitions.map((exhibition) => (
+                    <TableRow key={exhibition.exhibitionId} className="border-b hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors">
+                      <TableCell className="text-xs sm:text-sm">
+                        <Link
+                          to={`/exhibitions/${exhibition.exhibitionId}`}
+                          className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
+                        >
+                          {exhibition.title}
+                        </Link>
+                      </TableCell>
+                      <TableCell className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+                        {dayjs(exhibition.startAt).format('YYYY-MM-DD HH:mm')} ~{' '}
+                        {exhibition.endAt ? dayjs(exhibition.endAt).format('YYYY-MM-DD HH:mm') : '무기한'}
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={exhibition.visibility === 'VISIBLE' ? 'default' : 'outline'} className="text-xs font-normal">
+                          {exhibition.visibility === 'VISIBLE' ? '노출' : '비노출'}
+                        </Badge>
+                      </TableCell>
+                      <TableCell className="text-center">
+                        <Badge variant="outline" className="text-xs font-normal">
+                          {exhibition.products.length}개
+                        </Badge>
+                      </TableCell>
+                      <TableCell>
+                        <div className="flex flex-col sm:flex-row gap-2 justify-center">
+                          <Link to={`/exhibitions/${exhibition.exhibitionId}`} className="w-full sm:w-auto">
+                            <Button variant="outline" size="sm" className="w-full sm:w-auto text-xs">
+                              상세보기
+                            </Button>
+                          </Link>
+                          <div className="w-full sm:w-auto">
+                            <ExhibitionDeleteDialog exhibitionTitle={exhibition.title} onDelete={() => handleDelete(exhibition.exhibitionId)} />
+                          </div>
+                        </div>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </div>
         </div>
       )}

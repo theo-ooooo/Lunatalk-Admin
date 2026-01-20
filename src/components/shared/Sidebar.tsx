@@ -21,7 +21,11 @@ const menu = [
   { label: '문의 관리', path: '/inquiries', icon: MessageSquare },
 ]
 
-export default function Sidebar() {
+interface SidebarProps {
+  onClose?: () => void
+}
+
+export default function Sidebar({ onClose }: SidebarProps) {
   const location = useLocation()
 
   return (
@@ -44,6 +48,7 @@ export default function Sidebar() {
             <Link
               key={path}
               to={path}
+              onClick={() => onClose?.()}
               className={cn(
                 'flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all group',
                 isActive

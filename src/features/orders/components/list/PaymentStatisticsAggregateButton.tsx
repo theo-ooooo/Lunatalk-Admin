@@ -43,19 +43,20 @@ export default function PaymentStatisticsAggregateButton() {
 
   return (
     <>
-      <div className="flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
         <div className="flex items-center gap-2">
-          <Calendar className="h-4 w-4 text-muted-foreground" />
+          <Calendar className="h-4 w-4 text-muted-foreground hidden sm:block" />
           <Input
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
-            className="w-40"
+            className="w-full sm:w-40 text-sm"
           />
         </div>
-        <Button onClick={handleAggregate} disabled={isPending} variant="outline">
-          <RefreshCw className={`h-4 w-4 mr-2 ${isPending ? 'animate-spin' : ''}`} />
-          결제 통계 갱신
+        <Button onClick={handleAggregate} disabled={isPending} variant="outline" className="w-full sm:w-auto text-sm">
+          <RefreshCw className={`h-4 w-4 sm:mr-2 ${isPending ? 'animate-spin' : ''}`} />
+          <span className="hidden sm:inline">결제 통계 갱신</span>
+          <span className="sm:hidden">갱신</span>
         </Button>
       </div>
 

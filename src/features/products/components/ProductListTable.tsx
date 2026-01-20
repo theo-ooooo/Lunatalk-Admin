@@ -32,11 +32,11 @@ export default function ProductListTable({ products }: Props) {
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50 dark:bg-gray-800/50">
-              <TableHead className="w-[100px] font-semibold text-gray-700 dark:text-gray-300">썸네일</TableHead>
-              <TableHead className="font-semibold text-gray-700 dark:text-gray-300">상품명</TableHead>
-              <TableHead className="w-[120px] font-semibold text-gray-700 dark:text-gray-300">가격</TableHead>
-              <TableHead className="w-[140px] font-semibold text-gray-700 dark:text-gray-300">카테고리</TableHead>
-              <TableHead className="font-semibold text-gray-700 dark:text-gray-300">색상</TableHead>
+              <TableHead className="min-w-[80px] sm:w-[100px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">썸네일</TableHead>
+              <TableHead className="min-w-[150px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">상품명</TableHead>
+              <TableHead className="min-w-[100px] sm:w-[120px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">가격</TableHead>
+              <TableHead className="min-w-[100px] sm:w-[140px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">카테고리</TableHead>
+              <TableHead className="min-w-[100px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">색상</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -48,26 +48,26 @@ export default function ProductListTable({ products }: Props) {
                   className="cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors border-b"
                   onClick={() => navigate(`/products/${product.productId}`)}
                 >
-                  <TableCell>
+                  <TableCell className="text-xs sm:text-sm">
                     {thumbnail ? (
                       <img
                         src={`https://lunatalk-images.s3.ap-northeast-2.amazonaws.com/${thumbnail}`}
                         alt="썸네일"
-                        className="w-16 h-16 object-cover rounded-lg border border-gray-200 dark:border-gray-700"
+                        className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg border border-gray-200 dark:border-gray-700"
                       />
                     ) : (
-                      <div className="w-16 h-16 bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-xs text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-xs text-gray-400 rounded-lg border border-gray-200 dark:border-gray-700">
                         없음
                       </div>
                     )}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-xs sm:text-sm">
                     <div className="font-medium text-gray-900 dark:text-gray-100">{product.name}</div>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-xs sm:text-sm">
                     <span className="font-semibold text-gray-900 dark:text-gray-100">{product.price.toLocaleString()}원</span>
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-xs sm:text-sm">
                     {product.category?.categoryName ? (
                       <Badge variant="outline" className="text-xs font-normal">
                         {product.category.categoryName}
@@ -76,7 +76,7 @@ export default function ProductListTable({ products }: Props) {
                       <span className="text-xs text-gray-400">없음</span>
                     )}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="text-xs sm:text-sm">
                     <div className="flex flex-wrap gap-1">
                       {product.colors.length > 0 ? (
                         product.colors.map((color, idx) => (

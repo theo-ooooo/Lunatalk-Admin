@@ -12,13 +12,13 @@ export default function ProductListPage() {
   const { data } = useProductsQuery(page)
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold tracking-tight">상품 목록</h2>
-          <p className="text-sm text-muted-foreground">등록된 모든 상품을 조회하고 관리할 수 있습니다.</p>
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight">상품 목록</h2>
+          <p className="text-xs sm:text-sm text-muted-foreground">등록된 모든 상품을 조회하고 관리할 수 있습니다.</p>
         </div>
-        <Button onClick={() => navigate('/products/new')} size="lg">
+        <Button onClick={() => navigate('/products/new')} size="lg" className="w-full sm:w-auto">
           + 상품 등록
         </Button>
       </div>

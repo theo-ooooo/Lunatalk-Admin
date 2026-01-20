@@ -50,19 +50,33 @@ export default function OrderTrendChart({ dailyOrderCounts }: OrderTrendChartPro
       <CardHeader>
         <CardTitle>최근 7일 주문 추이</CardTitle>
       </CardHeader>
-      <CardContent>
-        <ResponsiveContainer width="100%" height={300}>
-          <BarChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 0 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis domain={[0, yAxisMax]} allowDecimals={false} />
-            <Tooltip
-              formatter={(value: number | undefined) => [`${value ?? 0}건`, '주문수']}
-              labelFormatter={(label) => `날짜: ${label}`}
-            />
-            <Bar dataKey="주문수" fill="hsl(var(--chart-1))" />
-          </BarChart>
-        </ResponsiveContainer>
+      <CardContent className="p-4 sm:p-6">
+        <div className="w-full h-[250px] sm:h-[300px]">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart data={chartData} margin={{ top: 5, right: 10, left: 0, bottom: 5 }}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis 
+                dataKey="date" 
+                tick={{ fontSize: 12 }}
+                angle={-45}
+                textAnchor="end"
+                height={60}
+              />
+              <YAxis 
+                domain={[0, yAxisMax]} 
+                allowDecimals={false}
+                tick={{ fontSize: 12 }}
+                width={40}
+              />
+              <Tooltip
+                formatter={(value: number | undefined) => [`${value ?? 0}건`, '주문수']}
+                labelFormatter={(label) => `날짜: ${label}`}
+                contentStyle={{ fontSize: '12px' }}
+              />
+              <Bar dataKey="주문수" fill="hsl(var(--chart-1))" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       </CardContent>
     </Card>
   )

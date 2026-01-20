@@ -28,7 +28,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6 px-4 sm:px-0">
       <DashboardHeader />
       <DashboardStatsGrid dashboard={dashboard} formatNumber={formatNumber} formatCurrency={formatCurrency} />
       <OrderTrendChart dailyOrderCounts={dashboard.dailyOrderCounts} />

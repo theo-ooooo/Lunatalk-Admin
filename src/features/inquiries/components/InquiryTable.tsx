@@ -72,13 +72,13 @@ export default function InquiryTable({ inquiries }: Props) {
         <Table>
           <TableHeader>
             <TableRow className="bg-gray-50 dark:bg-gray-800/50">
-              <TableHead className="w-[70px] font-semibold text-gray-700 dark:text-gray-300">ID</TableHead>
-              <TableHead className="font-semibold text-gray-700 dark:text-gray-300">제목</TableHead>
-              <TableHead className="w-[110px] font-semibold text-gray-700 dark:text-gray-300">타입</TableHead>
-              <TableHead className="w-[100px] font-semibold text-gray-700 dark:text-gray-300">상태</TableHead>
-              <TableHead className="w-[120px] font-semibold text-gray-700 dark:text-gray-300">작성자</TableHead>
-              <TableHead className="w-[160px] font-semibold text-gray-700 dark:text-gray-300">작성일시</TableHead>
-              <TableHead className="w-[90px] font-semibold text-gray-700 dark:text-gray-300 text-center">답변</TableHead>
+              <TableHead className="min-w-[60px] sm:w-[70px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">ID</TableHead>
+              <TableHead className="min-w-[150px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">제목</TableHead>
+              <TableHead className="min-w-[90px] sm:w-[110px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">타입</TableHead>
+              <TableHead className="min-w-[80px] sm:w-[100px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">상태</TableHead>
+              <TableHead className="min-w-[100px] sm:w-[120px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">작성자</TableHead>
+              <TableHead className="min-w-[140px] sm:w-[160px] font-semibold text-gray-700 dark:text-gray-300 text-xs sm:text-sm">작성일시</TableHead>
+              <TableHead className="min-w-[70px] sm:w-[90px] font-semibold text-gray-700 dark:text-gray-300 text-center text-xs sm:text-sm">답변</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -89,21 +89,21 @@ export default function InquiryTable({ inquiries }: Props) {
                 onClick={() => navigate(`/inquiries/${inquiry.inquiryId}`)}
               >
                 <TableCell className="font-mono text-xs text-gray-500 dark:text-gray-400">#{inquiry.inquiryId}</TableCell>
-                <TableCell>
+                <TableCell className="text-xs sm:text-sm">
                   <div className="font-medium text-gray-900 dark:text-gray-100">{inquiry.title}</div>
                 </TableCell>
-                <TableCell>
+                <TableCell className="text-xs sm:text-sm">
                   <Badge variant="outline" className="text-xs font-normal">
                     {getTypeLabel(inquiry.type)}
                   </Badge>
                 </TableCell>
-                <TableCell>
+                <TableCell className="text-xs sm:text-sm">
                   <Badge variant={getStatusVariant(inquiry.status)} className="text-xs font-normal">
                     {getStatusLabel(inquiry.status)}
                   </Badge>
                 </TableCell>
-                <TableCell className="text-sm text-gray-700 dark:text-gray-300">{inquiry.member.nickname || inquiry.member.username}</TableCell>
-                <TableCell className="text-sm text-gray-500 dark:text-gray-400">{dayjs(inquiry.createdAt).format('YYYY-MM-DD HH:mm')}</TableCell>
+                <TableCell className="text-xs sm:text-sm text-gray-700 dark:text-gray-300">{inquiry.member.nickname || inquiry.member.username}</TableCell>
+                <TableCell className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{dayjs(inquiry.createdAt).format('YYYY-MM-DD HH:mm')}</TableCell>
                 <TableCell className="text-center">
                   {inquiry.reply ? (
                     <span className="inline-flex items-center justify-center w-16 px-2 py-1 text-xs font-medium rounded-full bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400">

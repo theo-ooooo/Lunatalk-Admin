@@ -16,10 +16,10 @@ export default function InquiryListPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       <div className="space-y-1">
-        <h2 className="text-2xl font-bold tracking-tight">문의 관리</h2>
-        <p className="text-sm text-muted-foreground">전체 문의를 검색하고 답변할 수 있습니다.</p>
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight">문의 관리</h2>
+        <p className="text-xs sm:text-sm text-muted-foreground">전체 문의를 검색하고 답변할 수 있습니다.</p>
       </div>
 
       <InquiryFilterForm onSearch={handleSearch} />
